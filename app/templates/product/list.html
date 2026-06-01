@@ -1,0 +1,17 @@
+<body>
+  <h1>All Students</h1>
+  <a href="{{ url_for('product.create_product') }}">+ Add New Product</a>
+  {% if products %}
+  <ul>
+    {% for product in products %}
+    <li>
+      {{ product.name }} -- {{ product.type }} -- Price: {{ product.price }}
+      <a href="{{ url_for('product.edit_product', product_id=product.id) }}">Edit</a>
+      <a href="{{ url_for('product.delete_product', product_id=product.id) }}">Delete</a>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p>No products found.</p>
+  {% endif %}
+</body>
