@@ -6,10 +6,47 @@ from app import db
 product_bp = Blueprint('product', __name__)
 
 # Route: show all students
-@product_bp.route('/')
+@product_bp.route('/admin/dashboard')
 def list_products():
     products = Product.query.all()  # Ask Model for all records
     return render_template('product/list.html', products=products)
+
+@product_bp.route('/')
+def home():
+    return render_template('home.html')
+
+@product_bp.route('/Cars')
+def cars():
+    cars_list = [
+        {"img": "Fortuner.png", "name": "TOYOTA FORTUNER", "price": 1775000},
+        {"img": "Mitsubishi Montero Sport.png", "name": "MITSUBISHI MONTERO SPORT", "price": 1568000},
+        {"img": "Ford Everest.png", "name": "FORD EVEREST", "price": 1864000},
+        {"img": "BAIC B30e Dune.png", "name": "BAIC B30e DUNE", "price": 599000},
+        {"img": "Jaecoo EJ6.png", "name": "JAECOO EJ6", "price": 1649000},
+        {"img": "Suzuki Jimny 5-Door.png", "name": "SUZUKI JIMMY 5-DOOR", "price": 6100000},
+        {"img": "VinFast VF.png", "name": "VinFast VF", "price": 590000},
+        {"img": "JETOUR T2.png", "name": "JETOUR T2", "price": 2498000},
+        {"img": "GAC AION V.png", "name": "GAC AION V", "price": 1498000},
+        {"img": "KIA SORENTO.png", "name": "KIA SORENTO", "price": 2188000},
+    ]
+
+    for car in cars_list:
+        existing = Product.query.filter_by(name=car['name']).first()
+
+        if not existing:
+            new_car = Product(
+                name=car['name'],
+                price=car['price'],
+                type='Car',
+                img=car['img']
+            )
+            db.session.add(new_car)
+
+    db.session.commit()
+
+    # IMPORTANT: fetch from DB (NOT list)
+    cars_from_db = Product.query.all()
+    return render_template('cars.html', cars_list=cars_from_db)
 
 # Route: show one student by ID
 @product_bp.route('/product/<int:product_id>')

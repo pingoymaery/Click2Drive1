@@ -1,27 +1,57 @@
-<body>
-  <h1>Edit Product</h1>
+{% extends 'base.html' %}
 
-  <!-- Flash messages -->
-  {% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-      {% for category, message in messages %}
-        <p><strong>{{ message }}</strong></p>
-      {% endfor %}
-    {% endif %}
-  {% endwith %}
+{% block content %}
+<main class="dashboard-main">
+    <section class="section-container form-section-container">
+        <!-- Form Header -->
+        <div class="dashboard-header">
+            <div>
+                <h1 class="dashboard-title">Edit Product</h1>
+                <p class="dashboard-subtitle">Modify the specific technical or pricing details of this vehicle</p>
+            </div>
+        </div>
 
-  <!-- Edit form – pre-filled with existing data -->
-  <form method="POST" action="{{ url_for('product.edit_product', product_id=product.id) }}">
-    <label>Name:</label><br>
-    <input type="text" name="name" value="{{ product.name }}" required><br><br>
+        <!-- Flash Alert System Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash-alert alert-{{ category }}">
+                        <i class="fa-solid fa-circle-exclamation"></i>
+                        <span>{{ message }}</span>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
 
-    <label>Type:</label><br>
-    <input type="text" name="type" value="{{ product.type }}" required><br><br>
+        <!-- Pre-filled Form Box Wrapper -->
+        <div class="dashboard-form-card">
+            <form method="POST" action="{{ url_for('product.edit_product', product_id=product.id) }}">
+                <div class="form-group">
+                    <label for="name">Product/Vehicle Name</label>
+                    <input type="text" id="name" name="name" value="{{ product.name }}" placeholder="e.g., Porsche 911 GT3" required>
+                </div>
 
-    <label>Price:</label><br>
-    <input type="number" step="0.01" name="price" value="{{ product.price }}" required><br><br>
+                <div class="form-group">
+                    <label for="type">Vehicle Type / Category</label>
+                    <input type="text" id="type" name="type" value="{{ product.type }}" placeholder="e.g., Sports Car, SUV, Sedan" required>
+                </div>
 
-    <button type="submit">Save Changes</button>
-    <a href="{{ url_for('product.list_products') }}">Cancel</a>
-  </form>
-</body>
+                <div class="form-group">
+                    <label for="price">Price (Peso)</label>
+                    <div class="price-input-wrapper">
+                        <span class="currency-symbol">₱</span>
+                        <input type="number" id="price" step="0.01" name="price" value="{{ product.price }}" placeholder="0.00" required>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="cta-button submit-btn">
+                        <i class="fa-solid fa-pen-to-square"></i> Save Changes
+                    </button>
+                    <a href="{{ url_for('product.list_products') }}" class="cancel-btn">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </section>
+</main>
+{% endblock %}

@@ -1,14 +1,44 @@
-<body>
-  <h1>Delete Product</h1>
+{% extends 'base.html' %}
 
-  <p>Are you sure you want to delete <strong>{{ product.name }}</strong>?</p>
-  <p>Type: {{ product.type }}</p>
-  <p>Price: {{ product.price }}</p>
-  <p>This action cannot be undone.</p>
+{% block content %}
+<main class="dashboard-main">
+    <section class="section-container form-section-container">
+        <div class="danger-zone-card">
+            <div class="danger-header">
+                <i class="fa-solid fa-triangle-exclamation warning-icon"></i>
+                <h2>Confirm Deletion</h2>
+                <p>Are you absolutely sure you want to remove this product?</p>
+            </div>
 
-  <form method="POST" action="{{ url_for('product.delete_product', product_id=product.id) }}">
-    <button type="submit">Yes, Delete</button>
-  </form>
+            <!-- Product Summary Context -->
+            <div class="deletion-summary-box">
+                <div class="summary-row">
+                    <span class="summary-label">Vehicle Name:</span>
+                    <strong class="summary-value">{{ product.name }}</strong>
+                </div>
+                <div class="summary-row">
+                    <span class="summary-label">Type:</span>
+                    <span class="summary-value">{{ product.type }}</span>
+                </div>
+                <div class="summary-row">
+                    <span class="summary-label">Price:</span>
+                    <span class="summary-value price-highlight">₱{{ product.price }}</span>
+                </div>
+            </div>
 
-  <a href="{{ url_for('product.list_products') }}">Cancel</a>
-</body>
+            <p class="permanent-action-text">
+                <i class="fa-solid fa-circle-info"></i> This action cannot be undone. It will remove the item permanently.
+            </p>
+
+            <div class="danger-actions">
+                <form method="POST" action="{{ url_for('product.delete_product', product_id=product.id) }}">
+                    <button type="submit" class="delete-confirm-btn">
+                        <i class="fa-solid fa-trash-can"></i> Yes, Delete Item
+                    </button>
+                </form>
+                <a href="{{ url_for('product.list_products') }}" class="cancel-btn">Cancel and Go Back</a>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

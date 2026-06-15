@@ -1,24 +1,57 @@
-<body>
-  <h1>Add New Product</h1>
-  {% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-      {% for category, message in messages %}
-        <p><strong>{{ message }}</strong></p>
-      {% endfor %}
-    {% endif %}
-  {% endwith %}
+{% extends 'base.html' %}
 
-  <form method="POST" action="{{ url_for('product.create_product') }}">
-    <label>Name:</label><br>
-    <input type="text" name="name" required><br><br>
+{% block content %}
+<main class="dashboard-main">
+    <section class="section-container form-section-container">
+        <!-- Form Header -->
+        <div class="dashboard-header">
+            <div>
+                <h1 class="dashboard-title">Add New Product</h1>
+                <p class="dashboard-subtitle">Insert a new vehicle item into your digital showroom</p>
+            </div>
+        </div>
 
-    <label>Type:</label><br>
-    <input type="text" name="type" required><br><br>
+        <!-- Flash Alert System Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash-alert alert-{{ category }}">
+                        <i class="fa-solid fa-circle-exclamation"></i>
+                        <span>{{ message }}</span>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
 
-    <label>Price:</label><br>
-    <input type="number" step="0.01" name="grade" required><br><br>
+        <!-- Interactive Form Box -->
+        <div class="dashboard-form-card">
+            <form method="POST" action="{{ url_for('product.create_product') }}">
+                <div class="form-group">
+                    <label for="name">Product/Vehicle Name</label>
+                    <input type="text" id="name" name="name" placeholder="e.g., Porsche 911 GT3" required>
+                </div>
 
-    <button type="submit">Save Product</button>
-    <a href="{{ url_for('product.list_products') }}">Cancel</a>
-  </form>
-</body>
+                <div class="form-group">
+                    <label for="type">Vehicle Type / Category</label>
+                    <input type="text" id="type" name="type" placeholder="e.g., Sports Car, SUV, Sedan" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="price">Price (Peso)</label>
+                    <div class="price-input-wrapper">
+                        <span class="currency-symbol">₱</span>
+                        <input type="number" id="price" step="1" name="price" placeholder="0" required>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="cta-button submit-btn">
+                        <i class="fa-solid fa-floppy-disk"></i> Save Product
+                    </button>
+                    <a href="{{ url_for('product.list_products') }}" class="cancel-btn">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </section>
+</main>
+{% endblock %}

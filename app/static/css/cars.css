@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&display=swap');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css');
 
+/* ==========================================================================
+   GLOBAL VARIABLES & CONFIGURATION
+   ========================================================================== */
 :root {
     --primary-red: #f40552;
     --primary-red-hover: #d00445;
@@ -27,12 +30,24 @@ body {
     overflow-x: hidden;
 }
 
+/* ==========================================================================
+   LAYOUT CONTAINERS
+   ========================================================================== */
 .section-container {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 5%;
 }
 
+.main-content {
+    padding: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* ==========================================================================
+   NAVIGATION HEADER (FIXED TOP MAP)
+   ========================================================================== */
 header {
     background-color: rgba(0, 0, 0, 0.95);
     color: var(--text-main);
@@ -43,7 +58,7 @@ header {
     z-index: 1000;
     backdrop-filter: blur(10px);
     border-bottom: 5px solid var(--border-subtle);
-    box-shadow: 0 2px 20px rgba(0,0,0,0.5);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
 }
 
 .header-container {
@@ -131,12 +146,9 @@ nav a.cart:hover {
     background: transparent;
 }
 
-.main-content {
-    padding: 40px;
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
+/* ==========================================================================
+   PAGE HEADERS & FILTERS (DASHBOARD VIEWS)
+   ========================================================================== */
 .page-header {
     text-align: center;
     margin-bottom: 30px;
@@ -179,13 +191,7 @@ nav a.cart:hover {
     color: #f0f0f0;
 }
 
-.category-btn.primary {
-    background-color: #334155;
-    color: white;
-    border: 1px solid #475569;
-}
-
-.category-btn.active {
+.category-btn.primary, .category-btn.active {
     background-color: #334155;
     color: white;
     border: 1px solid #475569;
@@ -204,6 +210,9 @@ nav a.cart:hover {
     justify-content: center;
 }
 
+/* ==========================================================================
+   FLEET / CARS GRID STYLES
+   ========================================================================== */
 .cars-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -302,6 +311,134 @@ nav a.cart:hover {
     color: #c1121f;
 }
 
+/* ==========================================================================
+   PRODUCT DETAIL VIEW COMPONENT 
+   ========================================================================== */
+/* Safely offsets down below the top navigation and centers the main content block */
+.main-content.detail-view {
+    margin: 140px auto 40px auto; 
+    max-width: 800px;
+    width: 90%;
+    display: block;
+}
+
+/* Custom class wrapper preventing collision with global navigation headers */
+.page-title-section {
+    text-align: center;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.page-title-section h1 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: whitesmoke;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.page-title-section p {
+    color: var(--text-muted);
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.product-badge {
+    display: inline-block;
+    padding: 6px 16px;
+    background-color: rgba(244, 5, 82, 0.1);
+    color: var(--primary-red);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 20px;
+    border: 1px solid rgba(244, 5, 82, 0.2);
+}
+
+/* Explicitly structural dark card box */
+.car-detail-card {
+    background-color: var(--background-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 15px;
+    padding: 40px;
+    margin: 30px 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    text-align: left;
+}
+
+/* Forces two structured columns */
+.detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.detail-group {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Property Labels */
+.detail-group label {
+    display: block;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.price-value {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: var(--primary-red);
+    line-height: 1.2;
+}
+
+.type-value {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--text-main);
+    line-height: 1.2;
+}
+
+/* Return Action positioning */
+.detail-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+.btn-return {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: var(--transition-smooth);
+    padding: 12px 24px;
+    border-radius: 25px;
+    border: 1px solid var(--border-subtle);
+    background: transparent;
+}
+
+.btn-return:hover {
+    color: var(--text-main);
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: var(--primary-red);
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
 footer {
     padding: 80px 0 50px;
     border-top: 1px solid var(--border-subtle);
@@ -314,7 +451,7 @@ footer {
 }
 
 .copyright-text a {
-    color: rgba(255,255,255,0.4);
+    color: rgba(255, 255, 255, 0.4);
     text-decoration: none;
 }
 
@@ -322,6 +459,9 @@ footer {
     color: var(--text-muted);
 }
 
+/* ==========================================================================
+   MEDIA QUERIES / RESPONSIVE DESIGN
+   ========================================================================== */
 @media (max-width: 1200px) {
     .cars-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -355,5 +495,10 @@ footer {
 
     .category-filters {
         justify-content: center;
+    }
+
+    .detail-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
     }
 }

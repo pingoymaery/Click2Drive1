@@ -27,13 +27,15 @@
         </div>
         {% for car in cars_list %}
         <div class="car-card">
-            <img src="{{ url_for('static', filename='img/' ~ car.img)}}" alt="{{ car.name }}" class="car-image">
+            <img src="{{ url_for('static', filename='img/SUVs/' ~ car.img)}}" alt="{{ car.name }}" class="car-image">
             <h3>{{ car.name }}</h3>
-            <p class="price">{{ car.price }}</p>
-            <a href=" " class="products">Explore</a>
+            <p class="price">₱{{ "{:,}".format(car.price) }}</p>
+            <a href="{{ url_for('product.student_detail', product_id=car.id) }}" class="products">Explore</a>
         </div>
         {% endfor %}
     </div>
 </main>
 
 {% endblock %}
+
+print("CARS ROUTE LOADED")

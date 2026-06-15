@@ -232,8 +232,611 @@ footer {
     color: var(--text-muted);
 }
 
-@media (max-width: 1200px) {
-    .hero-content h2 { font-size: 3rem; }
+/* Dashboard Layout and Header */
+
+/* Core Layout Wrapper */
+.console-wrapper {
+    margin-top: 120px; 
+    padding-bottom: 80px;
+}
+
+/* Header Elements Group */
+.console-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 25px;
+}
+
+.console-title {
+    font-size: 2.2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: linear-gradient(45deg, #fff, var(--text-muted));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.console-subtitle {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    font-weight: 400;
+    margin-top: 5px;
+}
+
+.asset-trigger {
+    padding: 12px 25px;
+    font-size: 0.85rem;
+    border-radius: 6px;
+}
+
+/* Single Box Unified Data Panel */
+.data-panel {
+    background-color: var(--background-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Data Sheet Table Architecture */
+.data-sheet {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.95rem;
+}
+
+.data-sheet th, 
+.data-sheet td {
+    padding: 18px 24px;
+    vertical-align: middle;
+}
+
+.data-sheet th {
+    background-color: rgba(0, 0, 0, 0.3);
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+/* Panel Row Interactive Styling */
+.sheet-row {
+    border-bottom: 1px solid var(--border-subtle);
+    transition: var(--transition-smooth);
+}
+
+.sheet-row:last-child {
+    border-bottom: none;
+}
+
+.sheet-row:hover {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* Dynamic Inner Row Components */
+.primary-identity-cell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--text-main);
+}
+
+.asset-glyph {
+    color: rgba(255, 255, 255, 0.15);
+    font-size: 1.1rem;
+    transition: var(--transition-smooth);
+}
+
+.sheet-row:hover .asset-glyph {
+    color: var(--primary-red);
+}
+
+.category-tag {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 4px 10px;
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-muted);
+    border-radius: 4px;
+}
+
+.monetary-value {
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.align-right {
+    text-align: right;
+}
+
+/* Action Control Links */
+.management-controls {
+    display: inline-flex;
+    gap: 15px;
+    justify-content: flex-end;
+}
+
+.control-link {
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: var(--transition-smooth);
+}
+
+.modify-action {
+    color: var(--text-muted);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-subtle);
+}
+
+.modify-action:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.purge-action {
+    color: rgba(255, 255, 255, 0.4);
+    border: 1px solid transparent;
+}
+
+.purge-action:hover {
+    color: #fff;
+    background-color: rgba(244, 5, 82, 0.15);
+    border-color: rgba(244, 5, 82, 0.3);
+}
+
+/* Clean Empty Structural Layout Inside Panel */
+.panel-empty-view {
+    text-align: center;
+    padding: 80px 40px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.notice-icon {
+    font-size: 3.5rem;
+    color: rgba(255, 255, 255, 0.1);
+    margin-bottom: 20px;
+}
+
+.panel-empty-view h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.panel-empty-view p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+}
+
+/* Mini Phone Displays Configuration */
+@media (max-width: 768px) {
+    .data-sheet th:nth-child(2), 
+    .data-sheet td:nth-child(2) {
+        display: none;
+    }
+}
+.dashboard-main {
+    margin-top: 120px; /* Gives space below your fixed header */
+    padding-bottom: 80px;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 25px;
+}
+
+.dashboard-title {
+    font-size: 2.2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: linear-gradient(45deg, #fff, var(--text-muted));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.dashboard-subtitle {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    font-weight: 400;
+    margin-top: 5px;
+}
+
+.add-product-btn {
+    padding: 12px 25px;
+    font-size: 0.85rem;
+    border-radius: 6px;
+}
+
+/* Product Dashboard Grid Layout */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+/* Individual Product Dashboard Card */
+.product-card {
+    background-color: var(--background-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: var(--transition-smooth);
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(244, 5, 82, 0.4);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+}
+
+.product-card-body {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.product-type-badge {
+    align-self: flex-start;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 4px 10px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-muted);
+    border-radius: 4px;
+}
+
+.product-name {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-main);
+    letter-spacing: 0.5px;
+}
+
+.product-price-tag {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.price-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.price-value {
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: var(--primary-red);
+}
+
+/* Action Strip on Footer of Cards */
+.product-card-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-top: 1px solid var(--border-subtle);
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.action-btn {
+    text-align: center;
+    padding: 15px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: var(--transition-smooth);
+}
+
+.edit-btn {
+    color: var(--text-muted);
+    border-right: 1px solid var(--border-subtle);
+}
+
+.edit-btn:hover {
+    color: var(--text-main);
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+.delete-btn {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.delete-btn:hover {
+    color: #fff;
+    background-color: rgba(244, 5, 82, 0.15);
+}
+
+/* Empty Dashboard State Styling */
+.empty-dashboard-state {
+    text-align: center;
+    padding: 80px 40px;
+    background-color: var(--background-card);
+    border: 1px dashed rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    max-width: 600px;
+    margin: 40px auto;
+}
+
+.empty-icon {
+    font-size: 3.5rem;
+    color: rgba(255, 255, 255, 0.1);
+    margin-bottom: 20px;
+}
+
+.empty-dashboard-state h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.empty-dashboard-state p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+}
+
+/* Container sizing for form pages */
+.form-section-container {
+    max-width: 650px !important;
+    margin: 0 auto;
+}
+
+/* Flash Messages Styling */
+.flash-alert {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px 20px;
+    background: rgba(244, 5, 82, 0.1);
+    border: 1px solid var(--primary-red);
+    color: #fff;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    margin-bottom: 25px;
+    font-weight: 500;
+}
+
+/* Card-box container for forms */
+.dashboard-form-card {
+    background-color: var(--background-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Individual form groups */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+}
+
+/* Unified Inputs Styling */
+.form-group input[type="text"],
+.form-group input[type="number"] {
+    width: 100%;
+    padding: 14px 16px;
+    background-color: #141414;
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    color: var(--text-main);
+    font-family: var(--font-stack);
+    font-size: 0.95rem;
+    outline: none;
+    transition: var(--transition-smooth);
+}
+
+.form-group input:focus {
+    border-color: var(--primary-red);
+    background-color: #1a1a1a;
+    box-shadow: 0 0 10px rgba(244, 5, 82, 0.15);
+}
+
+/* Custom design field for Price prefix */
+.price-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.price-input-wrapper .currency-symbol {
+    position: absolute;
+    left: 18px;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.price-input-wrapper input {
+    padding-left: 35px !important;
+}
+
+/* Standardized Buttons Row */
+.form-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 35px;
+}
+
+.submit-btn {
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-stack);
+    padding: 14px 30px;
+    font-size: 0.85rem;
+    border-radius: 6px;
+    flex-grow: 1;
+}
+
+.cancel-btn {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: var(--transition-smooth);
+    padding: 10px 15px;
+}
+
+.cancel-btn:hover {
+    color: var(--text-main);
+}
+
+/* ==========================================================================
+   Danger / Delete Confirmation Block Styling
+   ========================================================================== */
+.danger-zone-card {
+    background-color: var(--background-card);
+    border: 1px solid rgba(244, 5, 82, 0.2);
+    border-radius: 8px;
+    padding: 45px 40px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+}
+
+.danger-header {
+    margin-bottom: 30px;
+}
+
+.warning-icon {
+    font-size: 3rem;
+    color: var(--primary-red);
+    margin-bottom: 15px;
+}
+
+.danger-header h2 {
+    font-size: 1.8rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 5px;
+}
+
+.danger-header p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* Deletion Context box elements */
+.deletion-summary-box {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    padding: 20px 25px;
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.summary-row:last-child {
+    border-bottom: none;
+}
+
+.summary-label {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.summary-value {
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+.price-highlight {
+    color: var(--primary-red);
+    font-weight: 700;
+}
+
+.permanent-action-text {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.4);
+    margin-bottom: 35px;
+}
+
+.danger-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.danger-actions form {
+    width: 100%;
+}
+
+.delete-confirm-btn {
+    width: 100%;
+    padding: 16px;
+    background-color: var(--primary-red);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-family: var(--font-stack);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    box-shadow: 0 5px 20px rgba(244, 5, 82, 0.2);
+}
+
+.delete-confirm-btn:hover {
+    background-color: var(--primary-red-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(244, 5, 82, 0.35);
 }
 
 @media (max-width: 992px) {
